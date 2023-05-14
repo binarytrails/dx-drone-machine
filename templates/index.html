@@ -242,22 +242,15 @@ var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
 // Create point series
 var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
-pointSeries.data.setAll([{
-  "geometry": {
-    "type": "Point",
-    "coordinates": [-73.778137, 40.641312]
-  }
-}, {
-  "geometry": {
-    "type": "Point",
-    "coordinates": [-0.454296, 51.470020]
-  }
-}, {
-  "geometry": {
-    "type": "Point",
-    "coordinates": [116.597504, 40.072498]
-  }
-}]);
+users_geoloc = JSON.parse('{{ users_geoloc }}');
+console.log("users_geoloc: ", users_geoloc);
+document.getElementById("playersCount").value = users_geoloc.length;
+
+for (geoloc of users_geoloc) {
+  console.log(geoloc);
+  pointSeries.pushDataItem({ latitude: geoloc[1], longitude: geoloc[0] });
+  //console.log('latitude: ', geoloc[0], ', longitude: ', geoloc[1]);
+}
 
 pointSeries.bullets.push(function() {
   return am5.Bullet.new(root, {
