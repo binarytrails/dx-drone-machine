@@ -11,3 +11,8 @@ To run this application:
 ```
 flask --debug run
 ```
+
+## Authors
+
+Artist: Amanda Dawn Christie
+Developer: [Vsevolod Ivanov](https://github.com/binarytrails)
