@@ -14,5 +14,5 @@ flask --debug run
 
 ## Authors
 
-Artist: Amanda Dawn Christie
-Developer: [Vsevolod Ivanov](https://github.com/binarytrails)
+- Artist: Amanda Dawn Christie
+- Developer: [Vsevolod Ivanov](https://github.com/binarytrails)
