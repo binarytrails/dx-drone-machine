@@ -1,1 +1,3 @@
 Flask==2.3.2
+geoip2
+flask_sqlalchemy

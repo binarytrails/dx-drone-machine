@@ -257,11 +257,13 @@ var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
 // Create point series
 var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
-users_geoloc = JSON.parse('{{ users_geoloc }}');
+var data = JSON.parse('{{ users_geoloc | safe }}');
+
+var users_geoloc = data.geolocations;
 console.log("users_geoloc: ", users_geoloc);
 document.getElementById("playersCount").value = users_geoloc.length;
 
-for (geoloc of users_geoloc) {
+for (geoloc of users_geoloc.geolocations) {
   console.log(geoloc);
   pointSeries.pushDataItem({ latitude: geoloc[1], longitude: geoloc[0] });
   //console.log('latitude: ', geoloc[0], ', longitude: ', geoloc[1]);
