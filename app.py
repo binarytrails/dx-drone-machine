@@ -58,9 +58,9 @@ def index():
             # This is an approximation for Montreal's coordinates
             latitude = 45.5017
             longitude = -73.5673
-            print("The IP address {ip} is not a valid GeoLocation. I presume you're in Montreal; bonjour, hi! ;)")
+            print(f"The IP address {ip} is not a valid GeoLocation. I presume you're in Montreal; bonjour, hi! ;)")
         else:
-            print('The IP address {ip} is not in the database')
+            print(f'The IP address {ip} is not in the database')
 
     # Check if user already exists
     user = User.query.get(ip)
@@ -69,9 +69,9 @@ def index():
         # Save the data into the database
         db.session.add(user)
         db.session.commit()
-        print('Your geolocation has been stored. User IP: {user.ip_address}')
+        print(f'Your geolocation has been stored. User IP: {user.ip_address}')
     else:
-        print('User with IP {ip} already exists')
+        print(f'User with IP {ip} already exists')
 
     # Convert the list to a JSON formatted string
     users_geoloc_json = json.dumps({"geolocations": get_geolocations()})
