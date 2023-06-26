@@ -42,6 +42,10 @@ def get_geolocations():
     users_geoloc = []
     for result in results:
         users_geoloc.append([result.longitude, result.latitude])
+        try:
+            print(f"Welcome new user from {result.city}, {result.country}!")
+        except:
+            pass
 
     return {"geolocations": users_geoloc}
 
