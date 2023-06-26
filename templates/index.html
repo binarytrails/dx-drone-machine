@@ -261,7 +261,7 @@ var data = JSON.parse('{{ users_geoloc | safe }}');
 
 var users_geoloc = data.geolocations;
 console.log("users_geoloc: ", users_geoloc);
-document.getElementById("playersCount").value = users_geoloc.length;
+document.getElementById("playersCount").value = users_geoloc.geolocations.length;
 
 for (geoloc of users_geoloc.geolocations) {
   console.log(geoloc);
