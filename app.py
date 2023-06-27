@@ -6,15 +6,34 @@ import requests
 from flask import Flask, render_template
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_socketio import SocketIO, emit
+from flask_cors import CORS, cross_origin
+
 from geoip2 import database
 from geoip2.errors import AddressNotFoundError
 
 app = Flask(__name__)
 
+CORS(app)  # This will enable CORS for all routes
+#@cross_origin()  # This will enable CORS for this route
+socketio = SocketIO(app, cors_allowed_origins="*") # todo enforce security to website
+
 # Define the database location in memory
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+@socketio.on('connect')
+def connect():
+    ip = request.remote_addr
+    emit('user_connected', {'ip': ip}, broadcast=True)
+    print(f'Client {ip} connected.')
+
+@socketio.on('disconnect')
+def disconnect():
+    ip = request.remote_addr
+    print(f'Client {ip} disconnected.')
+
 
 # Define the schema
 class User(db.Model):
@@ -84,4 +103,5 @@ def index():
     return render_template('index.html', title="DX Drone Machine", users_geoloc=users_geoloc_json)
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0', port=10000)
+    #app.run(debug=True,host='0.0.0.0', port=10000)
+    socketio.run(app, debug=False, host='0.0.0.0', port=10000)

@@ -10,8 +10,32 @@
     <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.min.js"></script>
 </head>
 <body>
+  <h1>Online Users</h1>
+    <ul style="color:red;" id="user-list">
+    </ul>
+    <script>
+        // Connect to the WebSocket server
+        const socket = io.connect('http://localhost:5000'); // CHANGEME to Server IP
+
+        // Listen for 'user_connected' event
+        socket.on('user_connected', function(msg) {
+            // Add new user to your online users data structure
+            console.log('User connected:', msg.ip);
+
+            // Add to the user list in the DOM
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(msg.ip));
+            document.getElementById("user-list").appendChild(li);
+        });
+
+        // On window unload, emit a 'disconnect' event
+        window.onbeforeunload = function(e) {
+            socket.emit('disconnect');
+        };
+    </script>
     <div id="circle-container">
     	<div id="tower-p-0" class="circle" style="top: 340px; left: 158px;"></div>
     	<div id="tower-p-1" class="circle" style="top: 297px; left: 159px;"></div>
