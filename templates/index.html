@@ -20,16 +20,24 @@
         // Connect to the WebSocket server
         const socket = io.connect('http://localhost:5000'); // CHANGEME to Server IP
 
-        // Listen for 'user_connected' event
-        socket.on('user_connected', function(msg) {
-            // Add new user to your online users data structure
-            console.log('User connected:', msg.ip);
+        // Listen for 'update_users' event
+        socket.on('update_users', function(users) {
+            // Clear the user list in the DOM
+            const userList = document.getElementById("user-list");
+            userList.innerHTML = '';
 
             // Add to the user list in the DOM
-            var li = document.createElement("li");
-            li.appendChild(document.createTextNode(msg.ip));
-            document.getElementById("user-list").appendChild(li);
+            for (const user of users) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(user));
+                userList.appendChild(li);
+            }
         });
+
+        // Poll server for user online status every 2 seconds
+        setInterval(function() {
+            socket.emit('poll');
+        }, 2000);
 
         // On window unload, emit a 'disconnect' event
         window.onbeforeunload = function(e) {

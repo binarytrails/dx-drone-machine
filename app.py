@@ -7,6 +7,7 @@ from flask import Flask, render_template
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO, emit
+from flask import session
 from flask_cors import CORS, cross_origin
 
 from geoip2 import database
@@ -23,17 +24,23 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+online_users = {}
+
 @socketio.on('connect')
 def connect():
-    ip = request.remote_addr
-    emit('user_connected', {'ip': ip}, broadcast=True)
-    print(f'Client {ip} connected.')
+    session['ip'] = request.remote_addr
+    online_users[session['ip']] = True
+    emit('user_connected', {'ip': session['ip']}, broadcast=True)
+    print(f'Client {session["ip"]} connected.')
+
+@socketio.on('poll')
+def handle_poll():
+    emit('update_users', list(online_users.keys()))
 
 @socketio.on('disconnect')
 def disconnect():
-    ip = request.remote_addr
-    print(f'Client {ip} disconnected.')
-
+    online_users.pop(session['ip'], None)
+    print(f'Client {session["ip"]} disconnected.')
 
 # Define the schema
 class User(db.Model):
