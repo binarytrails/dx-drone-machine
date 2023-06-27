@@ -288,7 +288,7 @@ pointSeries.bullets.push(function() {
 <script>
     // Connect to the WebSocket server
     console.log('Connecting to {{ server_uri | safe }} server ...')
-    const socket = io.connect('{{ server_uri | safe }}'); // CHANGEME to Server IP
+    const socket = io.connect('{{ server_uri | safe }}');
 
     // Listen for 'update_users' event
     socket.on('update_users', function(users) {
@@ -330,7 +330,7 @@ pointSeries.bullets.push(function() {
     // Poll server for user online status every 2 seconds
     setInterval(function() {
         socket.emit('poll');
-    }, 2000);
+    }, 5000); // every 5 seconds
 
     // On window unload, emit a 'disconnect' event
     window.onbeforeunload = function(e) {
