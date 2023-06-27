@@ -13,37 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.min.js"></script>
 </head>
 <body>
-  <h1>Online Users</h1>
-    <ul style="color:red;" id="user-list">
-    </ul>
-    <script>
-        // Connect to the WebSocket server
-        const socket = io.connect('http://localhost:5000'); // CHANGEME to Server IP
-
-        // Listen for 'update_users' event
-        socket.on('update_users', function(users) {
-            // Clear the user list in the DOM
-            const userList = document.getElementById("user-list");
-            userList.innerHTML = '';
-
-            // Add to the user list in the DOM
-            for (const user of users) {
-                var li = document.createElement("li");
-                li.appendChild(document.createTextNode(user));
-                userList.appendChild(li);
-            }
-        });
-
-        // Poll server for user online status every 2 seconds
-        setInterval(function() {
-            socket.emit('poll');
-        }, 2000);
-
-        // On window unload, emit a 'disconnect' event
-        window.onbeforeunload = function(e) {
-            socket.emit('disconnect');
-        };
-    </script>
     <div id="circle-container">
     	<div id="tower-p-0" class="circle" style="top: 340px; left: 158px;"></div>
     	<div id="tower-p-1" class="circle" style="top: 297px; left: 159px;"></div>
@@ -313,6 +282,44 @@ pointSeries.bullets.push(function() {
     </script>
   </div>
 </div>
+<h1>Online Users</h1>
+<ul style="color:red;" id="user-list">
+</ul>
+<script>
+    // Connect to the WebSocket server
+    const socket = io.connect('http://localhost:5000'); // CHANGEME to Server IP
+
+    // Listen for 'update_users' event
+    socket.on('update_users', function(users) {
+        // Clear the user list in the DOM
+        const userList = document.getElementById("user-list");
+        userList.innerHTML = '';
+
+        // Add to the user list in the DOM
+        for (const user of users) {
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(user));
+            userList.appendChild(li);
+        }
+    });
+
+    socket.on('update_geolocations', function(geolocations) {
+        pointSeries.clear();
+        for (let geoloc of geolocations) {
+            pointSeries.pushDataItem({ latitude: geoloc[1], longitude: geoloc[0] });
+        }
+    });
+
+    // Poll server for user online status every 2 seconds
+    setInterval(function() {
+        socket.emit('poll');
+    }, 2000);
+
+    // On window unload, emit a 'disconnect' event
+    window.onbeforeunload = function(e) {
+        socket.emit('disconnect');
+    };
+</script>
 </body>
 </html>
        

@@ -26,6 +26,21 @@ db = SQLAlchemy(app)
 
 online_users = {}
 
+def broadcast_geolocations():
+    results = db.session.query(User.latitude, User.longitude).distinct().all()
+    users_geoloc = []
+    for result in results:
+        users_geoloc.append([result.longitude, result.latitude])
+    emit('update_geolocations', users_geoloc, broadcast=True)
+
+@socketio.on('connect')
+def connect():
+    session['ip'] = request.remote_addr
+    online_users[session['ip']] = True
+    emit('user_connected', {'ip': session['ip']}, broadcast=True)
+    print(f'Client {session["ip"]} connected.')
+    broadcast_geolocations()
+
 @socketio.on('connect')
 def connect():
     session['ip'] = request.remote_addr
@@ -41,6 +56,7 @@ def handle_poll():
 def disconnect():
     online_users.pop(session['ip'], None)
     print(f'Client {session["ip"]} disconnected.')
+    broadcast_geolocations()
 
 # Define the schema
 class User(db.Model):
