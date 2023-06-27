@@ -287,7 +287,8 @@ pointSeries.bullets.push(function() {
 </ul>
 <script>
     // Connect to the WebSocket server
-    const socket = io.connect('http://localhost:5000'); // CHANGEME to Server IP
+    console.log('Connecting to {{ server_uri | safe }} server ...')
+    const socket = io.connect('{{ server_uri | safe }}'); // CHANGEME to Server IP
 
     // Listen for 'update_users' event
     socket.on('update_users', function(users) {

@@ -1,5 +1,7 @@
-# Vsevolod Ivanov
+# Author: Vsevolod Ivanov <seva@binarytrails.net>
+# python3 app.py "http://<ip>:<port>"
 
+import sys
 import json
 import requests
 
@@ -133,7 +135,8 @@ def index():
     users_geoloc_json = json.dumps({"geolocations": get_geolocations()})
 
     # Pass the JSON string to the template
-    return render_template('index.html', title="DX Drone Machine", users_geoloc=users_geoloc_json)
+    return render_template('index.html', title="DX Drone Machine", users_geoloc=users_geoloc_json,
+                           server_uri=str(sys.argv[1]))
 
 if __name__ == "__main__":
     #app.run(debug=True,host='0.0.0.0', port=10000)
