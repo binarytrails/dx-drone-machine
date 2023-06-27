@@ -304,10 +304,26 @@ pointSeries.bullets.push(function() {
     });
 
     socket.on('update_geolocations', function(geolocations) {
-        pointSeries.clear();
-        for (let geoloc of geolocations) {
-            pointSeries.pushDataItem({ latitude: geoloc[1], longitude: geoloc[0] });
+        // Re-Create point series
+        pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+        
+        console.log("users_geoloc: ", geolocations);
+        document.getElementById("playersCount").value = geolocations.length;
+        
+        for (geoloc of geolocations) {
+          console.log(geoloc);
+          pointSeries.pushDataItem({ latitude: geoloc[1], longitude: geoloc[0] });
+          console.log('latitude: ', geoloc[0], ', longitude: ', geoloc[1]);
         }
+        
+        pointSeries.bullets.push(function() {
+          return am5.Bullet.new(root, {
+            sprite: am5.Circle.new(root, {
+              radius: 5,
+              fill: am5.color("#ff0000")
+            })
+          });
+        });
     });
 
     // Poll server for user online status every 2 seconds
