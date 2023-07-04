@@ -11,157 +11,134 @@
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="circle-container">
+    	<div id="twr_P_bot-div" onclick="playAudio('twr_P_bot')" class="circle" style="top: 340px; left: 158px;">
+        <audio id="twr_P_bot" src="{{ url_for('static', filename='audio/twr_P_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_P_mid-div" onclick="playAudio('twr_P_mid')" class="circle" style="top: 297px; left: 159px;">
+        <audio id="twr_P_mid" src="{{ url_for('static', filename='audio/twr_P_mid.flac') }}"></audio>
+    	</div>
+    	<div id="twr_P_top-div" onclick="playAudio('twr_P_top')" class="circle" style="top: 245px; left: 158px;">
+        <audio id="twr_P_top" src="{{ url_for('static', filename='audio/twr_P_top.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_O_bot-div" onclick="playAudio('twr_O_bot')" class="circle" style="top: 334px; left: 238px;">
+        <audio id="twr_O_bot" src="{{ url_for('static', filename='audio/twr_O_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_O_mid-div" onclick="playAudio('twr_O_mid')" class="circle" style="top: 263px; left: 235px;">
+        <audio id="twr_O_mid" src="{{ url_for('static', filename='audio/twr_O_mid.flac') }}"></audio>
+    	</div>
+    	<div id="twr_O_top-div" onclick="playAudio('twr_O_top')" class="circle" style="top: 187px; left: 235px;">
+        <audio id="twr_O_top" src="{{ url_for('static', filename='audio/twr_O_top.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_N_bot-div" onclick="playAudio('twr_N_bot')" class="circle" style="top: 295px; left: 350px;">
+        <audio id="twr_N_bot" src="{{ url_for('static', filename='audio/twr_N_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_N_mid-div" onclick="playAudio('twr_N_mid')" class="circle" style="top: 233px; left: 350px;">
+        <audio id="twr_N_mid" src="{{ url_for('static', filename='audio/twr_N_mid.flac') }}"></audio>
+    	</div>
+    	<div id="twr_N_top-div" onclick="playAudio('twr_N_top')" class="circle" style="top: 182px; left: 349px;">
+        <audio id="twr_N_top" src="{{ url_for('static', filename='audio/twr_N_top.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_M_bot-div" onclick="playAudio('twr_M_bot')" class="circle" style="top: 307px; left: 410px;">
+        <audio id="twr_M_bot" src="{{ url_for('static', filename='audio/twr_M_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_M_mid-div" onclick="playAudio('twr_M_mid')" class="circle" style="top: 245px; left: 410px;">
+        <audio id="twr_M_mid" src="{{ url_for('static', filename='audio/twr_M_mid.flac') }}"></audio>
+    	</div>
+    	<div id="twr_M_top-div" onclick="playAudio('twr_M_top')" class="circle" style="top: 210px; left: 410px;">
+        <audio id="twr_M_top" src="{{ url_for('static', filename='audio/twr_M_top.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_K_bot-div" onclick="playAudio('twr_K_bot')" class="circle" style="top: 344px; left: 468px;">
+        <audio id="twr_K_bot" src="{{ url_for('static', filename='audio/twr_K_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_K_mid-div" onclick="playAudio('twr_K_mid')" class="circle" style="top: 308px; left: 468px;">
+        <audio id="twr_K_mid" src="{{ url_for('static', filename='audio/twr_K_mid.flac') }}"></audio>
+    	</div>
+    	<div id="twr_K_top-div" onclick="playAudio('twr_K_top')" class="circle" style="top: 258px; left: 468px;">
+        <audio id="twr_K_top" src="{{ url_for('static', filename='audio/twr_K_top.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_Q_bot-div" onclick="playAudio('twr_Q_bot')" class="circle" style="top: 290px; left: 557px;">
+        <audio id="twr_Q_bot" src="{{ url_for('static', filename='audio/twr_Q_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_Q_mid-div" onclick="playAudio('twr_Q_mid')" class="circle" style="top: 200px; left: 557px;">
+        <audio id="twr_Q_mid" src="{{ url_for('static', filename='audio/twr_Q_mid.flac') }}"></audio>
+    	</div>
+    	<div id="twr_Q_top-div" onclick="playAudio('twr_Q_top')" class="circle" style="top: 129px; left: 555px;">
+        <audio id="twr_Q_top" src="{{ url_for('static', filename='audio/twr_Q_top.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_J_bot-div" onclick="playAudio('twr_J_bot')" class="circle" style="top: 333px; left: 622px;">
+        <audio id="twr_J_bot" src="{{ url_for('static', filename='audio/twr_J_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_J_mid-div" onclick="playAudio('twr_J_mid')" class="circle" style="top: 297px; left: 622px;">
+        <audio id="twr_J_mid" src="{{ url_for('static', filename='audio/twr_J_mid.flac') }}"></audio>
+    	</div>
+    	<div id="twr_J_top-div" onclick="playAudio('twr_J_top')" class="circle" style="top: 257px; left: 622px;">
+        <audio id="twr_J_top" src="{{ url_for('static', filename='audio/twr_J_top.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_I_bot-div" onclick="playAudio('twr_I_bot')" class="circle" style="top: 345px; left: 798px;">
+        <audio id="twr_I_bot" src="{{ url_for('static', filename='audio/twr_I_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_I_mid-div" onclick="playAudio('twr_I_mid')" class="circle" style="top: 324px; left: 798px;">
+        <audio id="twr_I_mid" src="{{ url_for('static', filename='audio/twr_I_mid.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_F_bot-div" onclick="playAudio('twr_F_bot')" class="circle" style="top: 308px; left: 873px;">
+        <audio id="twr_F_bot" src="{{ url_for('static', filename='audio/twr_F_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_F_mid-div" onclick="playAudio('twr_F_mid')" class="circle" style="top: 274px; left: 873px;">
+        <audio id="twr_F_mid" src="{{ url_for('static', filename='audio/twr_F_mid.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_H_bot-div" onclick="playAudio('twr_H_bot')" class="circle" style="top: 349px; left: 901px;">
+        <audio id="twr_H_bot" src="{{ url_for('static', filename='audio/twr_H_bot.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_E_bot-div" onclick="playAudio('twr_E_bot')" class="circle" style="top: 329px; left: 1013px;">
+        <audio id="twr_E_bot" src="{{ url_for('static', filename='audio/twr_E_bot.flac') }}"></audio>
+    	</div>
+    	<div id="twr_E_mid-div" onclick="playAudio('twr_E_mid')" class="circle" style="top: 287px; left: 1013px;">
+        <audio id="twr_E_mid" src="{{ url_for('static', filename='audio/twr_E_mid.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_D_bot-div" onclick="playAudio('twr_D_bot')" class="circle" style="top: 325px; left: 1202px;">
+        <audio id="twr_D_bot" src="{{ url_for('static', filename='audio/twr_D_bot.flac') }}"></audio>
+    	</div>
+    	
+    	<div id="twr_C_bot-div" onclick="playAudio('twr_C_bot')" class="circle" style="top: 327px; left: 1305px;">
+        <audio id="twr_C_bot" src="{{ url_for('static', filename='audio/twr_C_bot.flac') }}"></audio>
+    	</div>
+    	
+    </div>
     <script>
+      function setCircleColor(id, color){
+        console.log(id);
+        console.log(color);
+        var circle_div = document.getElementById(id + "-div");
+        console.log(circle_div);
+        circle_div.style.backgroundColor = color;
+      }
       function playAudio(id) {
         var audio = document.getElementById(id);
         // audio being played
         if (audio && !audio.paused && audio.currentTime > 0 && !audio.ended){
             audio.pause();
+            setCircleColor(id, "#b2a0db");
         }
         else {
           audio.play();
+            setCircleColor(id, "red");
         }
       }
     </script>
-</head>
-<body>
-    <div id="circle-container">
-    	<div id="tower-p-0" onclick="playAudio('twr_P_bot')" class="circle" style="top: 340px; left: 158px;">
-        <audio id="twr_P_bot" src="{{ url_for('static', filename='audio/twr_P_bot.flac') }}"></audio>
-    	</div>
-    	<div id="tower-p-1" class="circle" style="top: 297px; left: 159px;">
-    	</div>
-    	<div id="tower-p-2" class="circle" style="top: 245px; left: 158px;">
-    	</div>
-    	
-    	<div id="tower-o-0" class="circle" style="top: 334px; left: 238px;">
-    	</div>
-    	<div id="tower-o-1" class="circle" style="top: 263px; left: 235px;">
-    	</div>
-    	<div id="tower-o-2" class="circle" style="top: 187px; left: 235px;">
-    	</div>
-    	
-    	<div id="tower-n-0" class="circle" style="top: 295px; left: 350px;">
-    	</div>
-    	<div id="tower-n-1" class="circle" style="top: 233px; left: 350px;">
-    	</div>
-    	<div id="tower-n-2" class="circle" style="top: 182px; left: 349px;">
-    	</div>
-    	
-    	<div id="tower-m-0" class="circle" style="top: 307px; left: 410px;">
-    	</div>
-    	<div id="tower-m-1" class="circle" style="top: 245px; left: 410px;">
-    	</div>
-    	<div id="tower-m-2" class="circle" style="top: 210px; left: 410px;">
-    	</div>
-    	
-    	<div id="tower-k-0" class="circle" style="top: 344px; left: 468px;">
-    	</div>
-    	<div id="tower-k-1" class="circle" style="top: 308px; left: 468px;">
-    	</div>
-    	<div id="tower-k-2" class="circle" style="top: 258px; left: 468px;">
-    	</div>
-    	
-    	<div id="tower-q-0" class="circle" style="top: 290px; left: 557px;">
-    	</div>
-    	<div id="tower-q-1" class="circle" style="top: 200px; left: 557px;">
-    	</div>
-    	<div id="tower-q-2" class="circle" style="top: 129px; left: 555px;">
-    	</div>
-    	
-    	<div id="tower-j-0" class="circle" style="top: 333px; left: 622px;">
-    	</div>
-    	<div id="tower-j-1" class="circle" style="top: 297px; left: 622px;">
-    	</div>
-    	<div id="tower-j-2" class="circle" style="top: 257px; left: 622px;">
-    	</div>
-    	
-    	<div id="tower-i-0" class="circle" style="top: 345px; left: 798px;">
-    	</div>
-    	<div id="tower-i-1" class="circle" style="top: 324px; left: 798px;">
-    	</div>
-    	
-    	<div id="tower-f-0" class="circle" style="top: 308px; left: 873px;">
-    	</div>
-    	<div id="tower-f-1" class="circle" style="top: 274px; left: 873px;">
-    	</div>
-    	
-    	<div id="tower-h-0" class="circle" style="top: 349px; left: 901px;">
-    	</div>
-    	
-    	<div id="tower-e-0" class="circle" style="top: 329px; left: 1013px;">
-    	</div>
-    	<div id="tower-e-1" class="circle" style="top: 287px; left: 1013px;">
-    	</div>
-    	
-    	<div id="tower-d-0" class="circle" style="top: 325px; left: 1202px;">
-    	</div>
-    	
-    	<div id="tower-c-0" class="circle" style="top: 327px; left: 1305px;">
-    	</div>
-    	
-    </div>
- <script>
-
-    var audio;
-    var trackIndex;
-    var audioFiles = ['twr_C_aug21-cm.wav',
-     'twr_N_oct6_090_halyard_other-cm-cm.wav',
-     'twr_C_aug21-cm-cm.wav',
-     'twr_H_sept 21_044_ladder_wire-cm-cm.wav',
-     'twr_P_oct6_108_ladder-cm-cm.wav',
-     'twr_F_sept21_036_halyard-cm.wav',
-     'twr_Q_oct6-cm.wav',
-     'twr_E_sept21_017_base-cm_1.wav',
-     'twr_M_oct5_080_halyard-cm-cm.wav',
-     'twr_M_oct5_073_guide wire play-cm.wav',
-     'twr_M_oct5_073_guide wire play-C-cm.wav',
-     'twr_J_sept29_059_diagonal base-cm-cm.wav',
-     'twr_Q_oct6_082_Xbeams-cm.wav',
-     'twr_Q_oct6_082_Xbeams-cm-cm_1.wav',
-     'twr_I_sept21_049_base-cm-cm.wav',
-     'twr_O_oct6_099_halyard-cm-cm.wav',
-     'twr_M_oct5_080_halyard-cm.wav',
-     'twr_E_sept21_022_halyard-cm-cm.wav',
-     'twr_N_oct6_083_pole-cm-cm.wav',
-     'twr_I_sept21_050_Xbeam-cm-cm.wav',
-     'twr_I_sept21_050_Xbeam-cm.wav',
-     'twr_M_oct5_073_guide wire play-C-cm-cm.wav',
-     'twr_C_aug21-cm_1.wav',
-     'twr_E_sept21_025_halyard_other-cm-cm.wav',
-     'twr_Q_oct6-cm-cm_1.wav',
-     'twr_J_sept29_060_halyard clamp-cm-cm.wav',
-     'twr_E_sept21_022_halyard-cm_1.wav',
-     'twr_M_oct5_073_guide wire play-cm-cm.wav',
-     'twr_O_oct6-cm-cm.wav',
-     'twr_I_sept21_049_base-cm.wav',
-     'twr_O_oct6_099_halyard-cm.wav',
-     'twr_E_sept21_025_halyard_other-cm.wav',
-     'twr_J_sept29_059_diagonal base-cm.wav',
-     'twr_E_sept21_017_base-cm-cm.wav'
-    ]
-
-
-    //let circle = document.querySelector("#tower-p-0");
-
-    var elements = document.getElementsByClassName("circle");
-
-    var myFunction = function() {
-        if (this.style.backgroundColor != "#b2a0db")
-        {
-        	this.style.backgroundColor = "red";
-        }
-        else
-        {
-        	this.style.backgroundColor = "#b2a0db";
-        }
-    };
-
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', myFunction, false);
-    }
-
-</script>
     <div class="header"></div>
     <div class="row-wrapper">
         <div class="row">
