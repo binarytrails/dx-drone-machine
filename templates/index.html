@@ -14,14 +14,20 @@
     <script>
       function playAudio(id) {
         var audio = document.getElementById(id);
-        audio.play();
+        // audio being played
+        if (audio && !audio.paused && audio.currentTime > 0 && !audio.ended){
+            audio.pause();
+        }
+        else {
+          audio.play();
+        }
       }
     </script>
 </head>
 <body>
     <div id="circle-container">
-    	<div id="tower-p-0" class="circle" style="top: 340px; left: 158px;">
-        <audio id="audio" src=""></audio>
+    	<div id="tower-p-0" onclick="playAudio('twr_P_bot')" class="circle" style="top: 340px; left: 158px;">
+        <audio id="twr_P_bot" src="{{ url_for('static', filename='audio/twr_P_bot.flac') }}"></audio>
     	</div>
     	<div id="tower-p-1" class="circle" style="top: 297px; left: 159px;">
     	</div>
