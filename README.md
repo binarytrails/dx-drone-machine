@@ -10,6 +10,13 @@ To start the server:
 python3 app.py 'http://<ip>:<port>'
 ```
 
+## Audio
+
+To keep them web friendly and under 1Gig. convert them to flac before publishing:
+
+    cd audio
+    for audio in $(ls); do ffmpeg -i $audio "${audio%.*}.flac"; done
+
 ## Authors
 
 - Artist: Amanda Dawn Christie

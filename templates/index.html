@@ -11,51 +11,88 @@
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.min.js"></script>
+    <script>
+      function playAudio(id) {
+        var audio = document.getElementById(id);
+        audio.play();
+      }
+    </script>
 </head>
 <body>
     <div id="circle-container">
-    	<div id="tower-p-0" class="circle" style="top: 340px; left: 158px;"></div>
-    	<div id="tower-p-1" class="circle" style="top: 297px; left: 159px;"></div>
-    	<div id="tower-p-2" class="circle" style="top: 245px; left: 158px;"></div>
+    	<div id="tower-p-0" class="circle" style="top: 340px; left: 158px;">
+        <audio id="audio" src=""></audio>
+    	</div>
+    	<div id="tower-p-1" class="circle" style="top: 297px; left: 159px;">
+    	</div>
+    	<div id="tower-p-2" class="circle" style="top: 245px; left: 158px;">
+    	</div>
     	
-    	<div id="tower-o-0" class="circle" style="top: 334px; left: 238px;"></div>
-    	<div id="tower-o-1" class="circle" style="top: 263px; left: 235px;"></div>
-    	<div id="tower-o-2" class="circle" style="top: 187px; left: 235px;"></div>
+    	<div id="tower-o-0" class="circle" style="top: 334px; left: 238px;">
+    	</div>
+    	<div id="tower-o-1" class="circle" style="top: 263px; left: 235px;">
+    	</div>
+    	<div id="tower-o-2" class="circle" style="top: 187px; left: 235px;">
+    	</div>
     	
-    	<div id="tower-n-0" class="circle" style="top: 295px; left: 350px;"></div>
-    	<div id="tower-n-1" class="circle" style="top: 233px; left: 350px;"></div>
-    	<div id="tower-n-2" class="circle" style="top: 182px; left: 349px;"></div>
+    	<div id="tower-n-0" class="circle" style="top: 295px; left: 350px;">
+    	</div>
+    	<div id="tower-n-1" class="circle" style="top: 233px; left: 350px;">
+    	</div>
+    	<div id="tower-n-2" class="circle" style="top: 182px; left: 349px;">
+    	</div>
     	
-    	<div id="tower-m-0" class="circle" style="top: 307px; left: 410px;"></div>
-    	<div id="tower-m-1" class="circle" style="top: 245px; left: 410px;"></div>
-    	<div id="tower-m-2" class="circle" style="top: 210px; left: 410px;"></div>
+    	<div id="tower-m-0" class="circle" style="top: 307px; left: 410px;">
+    	</div>
+    	<div id="tower-m-1" class="circle" style="top: 245px; left: 410px;">
+    	</div>
+    	<div id="tower-m-2" class="circle" style="top: 210px; left: 410px;">
+    	</div>
     	
-    	<div id="tower-k-0" class="circle" style="top: 344px; left: 468px;"></div>
-    	<div id="tower-k-1" class="circle" style="top: 308px; left: 468px;"></div>
-    	<div id="tower-k-2" class="circle" style="top: 258px; left: 468px;"></div>
+    	<div id="tower-k-0" class="circle" style="top: 344px; left: 468px;">
+    	</div>
+    	<div id="tower-k-1" class="circle" style="top: 308px; left: 468px;">
+    	</div>
+    	<div id="tower-k-2" class="circle" style="top: 258px; left: 468px;">
+    	</div>
     	
-    	<div id="tower-q-0" class="circle" style="top: 290px; left: 557px;"></div>
-    	<div id="tower-q-1" class="circle" style="top: 200px; left: 557px;"></div>
-    	<div id="tower-q-2" class="circle" style="top: 129px; left: 555px;"></div>
+    	<div id="tower-q-0" class="circle" style="top: 290px; left: 557px;">
+    	</div>
+    	<div id="tower-q-1" class="circle" style="top: 200px; left: 557px;">
+    	</div>
+    	<div id="tower-q-2" class="circle" style="top: 129px; left: 555px;">
+    	</div>
     	
-    	<div id="tower-j-0" class="circle" style="top: 333px; left: 622px;"></div>
-    	<div id="tower-j-1" class="circle" style="top: 297px; left: 622px;"></div>
-    	<div id="tower-j-2" class="circle" style="top: 257px; left: 622px;"></div>
+    	<div id="tower-j-0" class="circle" style="top: 333px; left: 622px;">
+    	</div>
+    	<div id="tower-j-1" class="circle" style="top: 297px; left: 622px;">
+    	</div>
+    	<div id="tower-j-2" class="circle" style="top: 257px; left: 622px;">
+    	</div>
     	
-    	<div id="tower-i-0" class="circle" style="top: 345px; left: 798px;"></div>
-    	<div id="tower-i-1" class="circle" style="top: 324px; left: 798px;"></div>
+    	<div id="tower-i-0" class="circle" style="top: 345px; left: 798px;">
+    	</div>
+    	<div id="tower-i-1" class="circle" style="top: 324px; left: 798px;">
+    	</div>
     	
-    	<div id="tower-f-0" class="circle" style="top: 308px; left: 873px;"></div>
-    	<div id="tower-f-1" class="circle" style="top: 274px; left: 873px;"></div>
+    	<div id="tower-f-0" class="circle" style="top: 308px; left: 873px;">
+    	</div>
+    	<div id="tower-f-1" class="circle" style="top: 274px; left: 873px;">
+    	</div>
     	
-    	<div id="tower-h-0" class="circle" style="top: 349px; left: 901px;"></div>
+    	<div id="tower-h-0" class="circle" style="top: 349px; left: 901px;">
+    	</div>
     	
-    	<div id="tower-e-0" class="circle" style="top: 329px; left: 1013px;"></div>
-    	<div id="tower-e-1" class="circle" style="top: 287px; left: 1013px;"></div>
+    	<div id="tower-e-0" class="circle" style="top: 329px; left: 1013px;">
+    	</div>
+    	<div id="tower-e-1" class="circle" style="top: 287px; left: 1013px;">
+    	</div>
     	
-    	<div id="tower-d-0" class="circle" style="top: 325px; left: 1202px;"></div>
+    	<div id="tower-d-0" class="circle" style="top: 325px; left: 1202px;">
+    	</div>
     	
-    	<div id="tower-c-0" class="circle" style="top: 327px; left: 1305px;"></div>
+    	<div id="tower-c-0" class="circle" style="top: 327px; left: 1305px;">
+    	</div>
     	
     </div>
  <script>
