@@ -119,9 +119,11 @@
     	
     </div>
     <script>
+      var activeAudio;
       function setCircleColor(id, color){
         console.log(id);
         console.log(color);
+        activeAudio = document.getElementById(id);
         var circle_div = document.getElementById(id + "-div");
         console.log(circle_div);
         circle_div.style.backgroundColor = color;
@@ -137,6 +139,15 @@
           audio.play();
             setCircleColor(id, "red");
         }
+      }
+      function setAudioVolume(){
+        var slider = document.getElementById("volumeSlider");
+        console.log("setAudioVolume: value=", slider.value);
+        if (activeAudio){
+          activeAudio.volume = slider.value / 100;
+          console.log("setAudioVolume: volume=", activeAudio.volume);
+        }
+        
       }
     </script>
     <div class="header"></div>
@@ -196,7 +207,7 @@
         <div class="left-slider">
             Volume</br>
             <div class="control-btn">+</div></br>
-            <input type="range" min="1" max="100" value="50" class="slider" id="volumeSlider" orient="vertical">
+            <input onclick="setAudioVolume()" type="range" min="1" max="100" value="50" class="slider" id="volumeSlider" orient="vertical">
             <div class="control-btn">-</div>
         </div>
         <div class="left-slider">
