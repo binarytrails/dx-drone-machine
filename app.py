@@ -54,7 +54,7 @@ def connect():
 @socketio.on('poll')   
 def handle_poll():                                                                                                        
     # Iterate through all users in the database                                                                       
-    for user in User.query.all():                            
+    for user in User.query.all():
         # Check if the user is not in the online users                                                                    
         if user.ip_address not in online_users:
             # Remove the user from the database                                                                           

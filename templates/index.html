@@ -118,38 +118,6 @@
     	</div>
     	
     </div>
-    <script>
-      var activeAudio;
-      function setCircleColor(id, color){
-        console.log(id);
-        console.log(color);
-        activeAudio = document.getElementById(id);
-        var circle_div = document.getElementById(id + "-div");
-        console.log(circle_div);
-        circle_div.style.backgroundColor = color;
-      }
-      function playAudio(id) {
-        var audio = document.getElementById(id);
-        // audio being played
-        if (audio && !audio.paused && audio.currentTime > 0 && !audio.ended){
-            audio.pause();
-            setCircleColor(id, "#b2a0db");
-        }
-        else {
-          audio.play();
-            setCircleColor(id, "red");
-        }
-      }
-      function setAudioVolume(){
-        var slider = document.getElementById("volumeSlider");
-        console.log("setAudioVolume: value=", slider.value);
-        if (activeAudio){
-          activeAudio.volume = slider.value / 100;
-          console.log("setAudioVolume: volume=", activeAudio.volume);
-        }
-        
-      }
-    </script>
     <div class="header"></div>
     <div class="row-wrapper">
         <div class="row">
@@ -253,7 +221,45 @@
 	</div>
     -->
 	<div id="chartdiv"></div>
-	<script>
+
+  <script>
+    var activeAudio;
+    function setCircleColor(id, color){
+      var circle_div = document.getElementById(id + "-div");
+      circle_div.style.backgroundColor = color;
+      console.log("[+] set circle_div id=", circle_div.id, " color=", color);
+    }
+    function playAudio(id) {
+      var audio = document.getElementById(id);
+      // another audio playing
+      if (activeAudio){
+        console.log("[!] got activeAudio id=", activeAudio.id);
+        if (!activeAudio.paused && activeAudio.currentTime > 0 && !activeAudio.ended){
+          activeAudio.pause();
+          console.log("[+] paused active audio sound");
+          setCircleColor(activeAudio.id, "#b2a0db");
+        }
+      }
+      // audio being played
+      if (audio && !audio.paused && audio.currentTime > 0 && !audio.ended){
+        audio.pause();
+        setCircleColor(id, "#b2a0db");
+      }
+      else {
+        audio.play();
+        setCircleColor(id, "red");
+      }
+      activeAudio = audio;
+    }
+    function setAudioVolume(){
+      var slider = document.getElementById("volumeSlider");
+      console.log("setAudioVolume: value=", slider.value);
+      if (activeAudio){
+        activeAudio.volume = slider.value / 100;
+        console.log("setAudioVolume: volume=", activeAudio.volume);
+      }
+      
+    }
 	// Map
 
 // Create root
