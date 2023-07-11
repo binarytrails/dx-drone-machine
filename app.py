@@ -39,16 +39,15 @@ def broadcast_geolocations():
 def connect():
     session['ip'] = request.remote_addr
     online_users[session['ip']] = True
-    emit('user_connected', {'ip': session['ip']}, broadcast=True)
     print(f'Client {session["ip"]} connected.')
     broadcast_geolocations()
 
-@socketio.on('connect')
-def connect():
+@socketio.on('broadcast_music')
+def broadcast_music(data):
     session['ip'] = request.remote_addr
     online_users[session['ip']] = True
-    emit('user_connected', {'ip': session['ip']}, broadcast=True)
-    print(f'Client {session["ip"]} connected.')
+    emit('broadcast_music', data, broadcast=True)
+    print(f'Client {session["ip"]} toggled music with id={data["id"]} and state={data["state"]}.')
     broadcast_geolocations()
 
 @socketio.on('poll')   
