@@ -181,7 +181,7 @@
         <div class="left-slider">
             Speed</br>
             <div class="control-btn">+</div></br>
-            <input type="range" min="1" max="100" value="50" class="slider" id="speedSlider" orient="vertical">
+            <input onclick="setAudioSpeed()" type="range" min="1" max="100" value="50" class="slider" id="speedSlider" orient="vertical">
             <div class="control-btn">-</div>
         </div>
     </div>
@@ -190,9 +190,9 @@
     <div class="small-pane">
       <div>Direction</div>
       <div class="horizontal-slider">
-        <div class="control-btn"><div class="arrow-left"></div></div>&nbsp;&nbsp;
+        <div onclick="toggleAudioDirection(-1)" class="control-btn"><div class="arrow-left"></div></div>&nbsp;&nbsp;
         <!--<input type="range" min="1" max="100" value="50" class="slider" id="directionSlider">-->
-        <div class="control-btn"><div class="arrow-right"></div></div>
+        <div onclick="toggleAudioDirection(1)" class="control-btn"><div class="arrow-right"></div></div>
       </div>
     </div>
     <div class="small-pane">
@@ -260,6 +260,31 @@
       if (activeAudio){
         activeAudio.volume = slider.value / 100;
         console.log("setAudioVolume: volume=", activeAudio.volume);
+      }
+    }
+
+    var playbackRate = 1;
+    var soundDirection = 1;
+    function setAudioSpeed()
+    {
+      var slider = document.getElementById("speedSlider")
+      playbackRate = slider.value / 100;
+      console.log("setAudioSpeed: sliderValue=", slider.value, " playbackRate=", playbackRate);
+      // audio being played
+      if (activeAudio && !activeAudio.paused && activeAudio.currentTime > 0 && !activeAudio.ended){
+        activeAudio.playbackRate = playbackRate;
+      }
+    }
+    function toggleAudioDirection(direction)
+    {
+      soundDirection = direction;
+      console.log("toggleAudioDirection: playbackRate=", soundDirection);
+      // audio being played
+      if (activeAudio){
+        // FIXME
+        // Firefox: Uncaught DOMException: Operation is not supported
+        // Chrome: Uncaught DOMException: Failed to set the 'playbackRate' property on 'HTMLMediaElement': The provided playback rate (-1) is not in the supported playback range.
+        activeAudio.playbackRate = playbackRate * soundDirection;
       }
     }
 
