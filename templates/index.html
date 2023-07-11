@@ -284,7 +284,12 @@
         // FIXME
         // Firefox: Uncaught DOMException: Operation is not supported
         // Chrome: Uncaught DOMException: Failed to set the 'playbackRate' property on 'HTMLMediaElement': The provided playback rate (-1) is not in the supported playback range.
-        activeAudio.playbackRate = playbackRate * soundDirection;
+        try {
+          activeAudio.playbackRate = playbackRate * soundDirection;
+        }
+        catch (error) {
+            alert("Not Supported in your Browser. Sorry :(");
+        }
       }
     }
 
