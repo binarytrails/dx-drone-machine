@@ -46,7 +46,8 @@ def connect():
 def broadcast_music(data):
     session['ip'] = request.remote_addr
     online_users[session['ip']] = True
-    emit('broadcast_music', data, broadcast=True)
+    # Broadcast the music state to all connected clients except the sender
+    emit('broadcast_music', data, broadcast=True, include_self=False)
     print(f'Client {session["ip"]} toggled music with id={data["id"]} and state={data["state"]}.')
     broadcast_geolocations()
 

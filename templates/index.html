@@ -330,6 +330,7 @@
     // Connect to the WebSocket server
     console.log('Connecting to {{ server_uri | safe }} server ...')
     const socket = io.connect('{{ server_uri | safe }}');
+    
     socket.on('broadcast_music', function(data) {
       var audio = document.getElementById(data.id);
       if (audio == null){
