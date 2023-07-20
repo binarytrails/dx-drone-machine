@@ -260,19 +260,19 @@
           activeAudio.pause();
           console.log("[+] paused active audio sound");
           setCircleColor(activeAudio.id, "#b2a0db");
-          socket.emit('broadcast_music', {id: activeAudio.id, state: false});
+          socket.emit('broadcast_music', {id: activeAudio.id, volume: activeAudio.volume, speed: activeAudio.speed, state: false});
         }
       }
       // audio being played
       if (audio && !audio.paused && audio.currentTime > 0 && !audio.ended){
         audio.pause();
         setCircleColor(id, "#b2a0db");
-        socket.emit('broadcast_music', {id: audio.id, state: false});
+        socket.emit('broadcast_music', {id: audio.id, volume: audio.volume, speed: audio.speed, state: false});
       }
       else {
         audio.play();
         setCircleColor(id, "red");
-        socket.emit('broadcast_music', {id: audio.id, state: true});
+        socket.emit('broadcast_music', {id: audio.id, volume: audio.volume, speed: audio.speed, state: true});
       }
       activeAudio = audio;
     }
@@ -394,6 +394,12 @@
       // audio being played
       if (audio && !audio.paused && audio.currentTime > 0 && !audio.ended){
         audio.pause();
+        if (data['volume']){
+          audio.volume = data['volume'];
+        }
+        if (data['speed']){
+          audio.speed = data['speed'];
+        }
         setCircleColor(audio.id, "#b2a0db");
       }
       else {
