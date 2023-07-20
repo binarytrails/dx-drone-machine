@@ -1,6 +1,6 @@
 # DX Drone Machine
 
-![Demo Preview of Two Players](./demo/preview-two-players.png)
+![Demo Preview of Two Players](./demo/preview-01.png)
 
 Towering 400 feet above the salt water marsh stood an intricate web of thick wire radio antennas transmitting shortwave all over the world. The horizontal wire antennas were suspended in the air with the support of 13 towers and were connected to the transmitter building via many kilometres of transmission lines.
 
