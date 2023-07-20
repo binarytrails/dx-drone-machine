@@ -7,9 +7,6 @@ body {
     background-image: url('../static/RCI-posterize-6-3183.jpg');
     background-size: cover;
     background-position: center;
-    //min-height: 100vh;
-    //max-width: 4000px;
-    //max-height: 3000px;
     width: 1897px;
     height: 2000px;
     
@@ -17,7 +14,7 @@ body {
 .header {
     width: 1897px;
     height: 452px;
-    background-image: url('../static/header.png');
+    background-image: url('../static/header2.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 1cm;
@@ -208,8 +205,8 @@ flex-direction: column;
 }
 
 .circle {
-    width: 20px;
-    height: 20px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: #b2a0db;
     position: absolute;
