@@ -23,7 +23,7 @@ body {
 }
 .row-wrapper {
     width: 70%;
-    margin: 0 auto;
+    margin: 0 150px;
 }
 .row {
     display: flex;
